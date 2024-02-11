@@ -4,7 +4,8 @@
 Game::Game()
 	:window(sf::VideoMode(800, 600), "RayCaster!")
 {
-	
+	map.loadMap("world.map", window);
+	//map.printMap();
 }
 
 //run method

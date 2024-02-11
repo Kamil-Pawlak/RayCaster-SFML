@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "ResourceHolder.h"
 #include "Player.h"
+#include "Map.h"
 
 namespace Textures
 {
@@ -29,6 +30,7 @@ private:
 	//create window
 	sf::RenderWindow window;
 	Player player;
+	Map map;
 	
 };
 
