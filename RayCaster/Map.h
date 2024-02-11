@@ -9,6 +9,8 @@ public:
 	void loadMap(std::string filename, sf::RenderWindow &window);
 	void printMap();
 	void drawMap(sf::RenderWindow& window);
+	std::vector<std::vector<int>> getMap() { return map; }
+	sf::RectangleShape getWall() { return wall; }
 	
 private:
 	int sizeX = 0;
