@@ -15,6 +15,12 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 		lookL = isPressed;
 	else if (key == sf::Keyboard::Right)
 		lookR = isPressed;
-	//looking with mouse
-	
+}
+void Game::handleMouseMovement()
+{
+	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	sf::Vector2i mouseDelta = mousePos - prevMousePos;
+	player.rotate(mouseDelta.x * 0.1, TimePerFrame);
+	sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+	prevMousePos = sf::Mouse::getPosition(window);
 }

@@ -15,7 +15,10 @@ void Game::processEvents()
 		case sf::Event::KeyReleased:
 			handlePlayerInput(event.key.code, false);
 		break;
+		case sf::Event::MouseMoved:
+			handleMouseMovement();
 		
+		break;
 		case sf::Event::Closed:
 			window.close();
 		break;

@@ -1,10 +1,6 @@
 #include "Player.h"
 #include <iostream>
 
-template <typename T>
-constexpr const T& clamp(const T& value, const T& low, const T& high) {
-	return std::max(low, std::min(value, high));
-}
 
 Player::Player()
 {
@@ -83,7 +79,7 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 		}
 	}
 	if (canMoveX)
-		shape.move(dx, 0);
+		shape.setPosition(shape.getPosition().x + dx, shape.getPosition().y);
 
 	// Check if the shape can move in the y-direction
 	bool canMoveY = true;
@@ -96,7 +92,7 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 		}
 	}
 	if (canMoveY)
-		shape.move(0, dy);
+		shape.setPosition(shape.getPosition().x, shape.getPosition().y + dy);
 }
 
 
@@ -116,7 +112,7 @@ void Player::castRays(sf::RenderWindow& window, Map& map) {
     int w = window.getSize().x;
     sf::Vector2i wallSize = map.getWallSize();
     sf::Vector2u windowSize = window.getSize();
-    int stepSize = 20;
+    int stepSize =15;
 
     // Pre-calculate constants
     double invW = 1.0 / w;

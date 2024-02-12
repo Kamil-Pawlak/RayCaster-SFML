@@ -28,6 +28,10 @@ void Game::update(sf::Time deltaTime)
 	{
 		player.rotate(-1.f, deltaTime);
 	}
+	
 	player.update(deltaTime, map);
+	//set mouse to the center of the screen
+	//sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+
 }
 

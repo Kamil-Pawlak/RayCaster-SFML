@@ -18,6 +18,7 @@ public:
 	
 private:
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+	void handleMouseMovement();
 	void update(sf::Time deltaTime);
 	void render();
 	void processEvents();
@@ -25,6 +26,7 @@ private:
 	bool lookR = 0, lookL = 0;
 	//time per frame
 	sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+	sf::Vector2i prevMousePos;
 
 private:
 	//create window

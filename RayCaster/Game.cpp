@@ -7,8 +7,10 @@ Game::Game()
 {
 	map.loadMap("world.map", window);
 	//map.printMap();
-	//window.setMouseCursorGrabbed(true);
-	//window.setMouseCursorVisible(false);
+	window.setMouseCursorGrabbed(true);
+	window.setMouseCursorVisible(false);
+	sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+	prevMousePos = sf::Mouse::getPosition();
 }
 
 //run method
