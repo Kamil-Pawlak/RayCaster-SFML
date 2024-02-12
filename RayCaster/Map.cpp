@@ -36,7 +36,7 @@ void Map::loadMap(std::string fileName, sf::RenderWindow &window)
 		//10000001000000000001
 		//... 0 - empty space
 		// 1 - wall
-		if (ch == '0' || ch == '1')
+		if (ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4')
 		{
 			map[i][j] = ch - '0';
 			i++;

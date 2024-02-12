@@ -35,12 +35,20 @@ void Player::update(sf::Time deltaTime, Map &map)
 
 void Player::rotate(float angle, sf::Time deltaTime)
 {
-	//apply delta time to angle of rotation
-	angle *= deltaTime.asMilliseconds();
-	this->angle += angle;
-	this->angle = fmod(this->angle, 360);
+	// Define a rotation speed (in degrees per second)
+	float rotationSpeed = 180.0f; // Adjust this value to change rotation speed
+
+	// Calculate the rotation for this frame based on the rotation speed and delta time
+	float rotationThisFrame = rotationSpeed * deltaTime.asSeconds();
+
+	// Apply the rotation to the player's angle
+	this->angle += angle * rotationThisFrame;
+
+	// Ensure the angle stays within the range [0, 360)
+	this->angle = std::fmod(this->angle, 360.0f);
+
+	// Set the rotation of the player's shape
 	shape.setRotation(this->angle);
-	//std::cout << this->angle << std::endl;
 }
 
 void Player::move(float x, float y, sf::Time deltaTime, Map &map)

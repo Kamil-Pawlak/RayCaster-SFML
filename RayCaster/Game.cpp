@@ -7,8 +7,8 @@ Game::Game()
 {
 	map.loadMap("world.map", window);
 	//map.printMap();
-	window.setMouseCursorGrabbed(true);
-	window.setMouseCursorVisible(false);
+	//window.setMouseCursorGrabbed(true);
+	//window.setMouseCursorVisible(false);
 }
 
 //run method
