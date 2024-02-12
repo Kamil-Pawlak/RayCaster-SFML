@@ -4,7 +4,7 @@
 
 Map::Map()
 {
-	wall.setFillColor(sf::Color::Magenta);
+	wall.setFillColor(sf::Color::Blue);
 }
 
 void Map::loadMap(std::string fileName, sf::RenderWindow &window)
