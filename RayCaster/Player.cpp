@@ -18,6 +18,8 @@ void Player::update(sf::Time deltaTime, Map &map)
 
 void Player::rotate(float angle, sf::Time deltaTime)
 {
+	//apply delta time to angle of rotation
+	angle *= deltaTime.asMilliseconds()/4;
 	this->angle += angle;
 	this->angle = fmod(this->angle, 360);
 	shape.setRotation(this->angle);
@@ -26,6 +28,10 @@ void Player::rotate(float angle, sf::Time deltaTime)
 
 void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 {
+	//apply deltatime to x and y
+	y *= deltaTime.asMilliseconds()/4;
+	x *= deltaTime.asMilliseconds()/4;
+	
 	//rotate the moving vector by the angle and move
 	float dx = (x * cos(angle * 3.14159265 / 180) - y * sin(angle * 3.14159265 / 180));
 	float dy = (x * sin(angle * 3.14159265 / 180) + y * cos(angle * 3.14159265 / 180));
