@@ -25,6 +25,7 @@ private:
 	bool lookR = 0, lookL = 0;
 	//time per frame
 	sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+	sf::Vector2i mousePos;
 
 private:
 	//create window

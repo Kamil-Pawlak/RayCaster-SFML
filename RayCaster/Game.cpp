@@ -2,10 +2,13 @@
 
 
 Game::Game()
-	:window(sf::VideoMode(800, 600), "RayCaster!")
+	:window(sf::VideoMode(1920, 1080), "RayCaster!",sf::Style::Fullscreen)
+	
 {
 	map.loadMap("world.map", window);
 	//map.printMap();
+	window.setMouseCursorGrabbed(true);
+	window.setMouseCursorVisible(false);
 }
 
 //run method

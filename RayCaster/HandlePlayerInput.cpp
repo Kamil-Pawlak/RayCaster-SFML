@@ -15,4 +15,6 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 		lookL = isPressed;
 	else if (key == sf::Keyboard::Right)
 		lookR = isPressed;
+	//looking with mouse
+	
 }

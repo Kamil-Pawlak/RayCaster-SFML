@@ -22,10 +22,15 @@ void Game::update(sf::Time deltaTime)
 	}
 	if (lookR)
 	{
-		player.rotate(2.5f, deltaTime);
+		player.rotate(1.f, deltaTime);
 	}
 	if (lookL)
 	{
-		player.rotate(-2.5f, deltaTime);
+		player.rotate(-1.f, deltaTime);
 	}
+	sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+	player.update(deltaTime, map);
+	
+	
+
 }
