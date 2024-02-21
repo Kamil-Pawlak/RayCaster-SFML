@@ -11,12 +11,12 @@ It is used to build a world in this project. First line of that file contains a 
 Second line contains length of the map. Wall size is calculated based on resolution of the window and dimensions of the map.
 Below those 2 lines there is matrix of numbers representing a map.
 These numbers represent:
-0 - Free Space
-1 - Red Wall
-2 - Green Wall
-3 - Blue Wall
-4 - Yellow Wall
-9 - Spawn Point.
+- 0 - Free Space
+- 1 - Red Wall
+- 2 - Green Wall
+- 3 - Blue Wall
+- 4 - Yellow Wall
+- 9 - Spawn Point.
 
 ### Example map file:
 ```
