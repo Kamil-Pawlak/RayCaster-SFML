@@ -5,7 +5,7 @@ In short terms we just cast rays from players position and when the ray hits a w
 With that distance we can calculate hight of the wall to be drawn.
 This technique was used in many early games, for example wolfenstein 3D.
 
-##Custom map
+## Custom map
 In the project we can find a **world.map** file.
 It is used to build a world in this project. First line of that file contains a number which represents width of the map (map is a grid)
 Second line contains length of the map. Wall size is calculated based on resolution of the window and dimensions of the map.
@@ -18,7 +18,7 @@ These numbers represent:
 4 - Yellow Wall
 9 - Spawn Point.
 
-###Here is a example of the map file (it is included in repository):
+### Example map file:
 ```
 20
 21
@@ -44,9 +44,10 @@ These numbers represent:
 11111001111111111111
 00000440000000000000
 ```
-##Fov
-**Fov** can be changed in the **update** method in a player's class by changind the value by which dir vector is multiplied.
+## FOV
+**FOV** can be changed in the **update** method in a player's class by changind the value by which dir vector is multiplied.
 ```
+cpp
 plane.x = -dir.y * 1.f;
 plane.y = dir.x * 1.f;
 ```
