@@ -45,7 +45,7 @@ These numbers represent:
 00000440000000000000
 ```
 ## FOV
-**FOV** can be changed in the **update** method in a player's class by changind the value by which dir vector is multiplied.
+**FOV** can be changed in the **update** method in a player's class by changing the value by which dir vector is multiplied.
 ```cpp
 plane.x = -dir.y * 1.f;
 plane.y = dir.x * 1.f;
