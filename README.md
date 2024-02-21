@@ -50,4 +50,5 @@ These numbers represent:
 plane.x = -dir.y * 1.f;
 plane.y = dir.x * 1.f;
 ```
-
+### To do
+- Create a tool for easier creation of a map.
