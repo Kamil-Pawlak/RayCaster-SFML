@@ -4,8 +4,7 @@
 void Game::render()
 {
 	window.clear();
-	map.drawMap(window);
-	player.draw(window);
+	
 	//draw floor
 	
 	sf::RectangleShape floor;
@@ -22,7 +21,8 @@ void Game::render()
 	//draw walls
 	player.castRays(window, map);
 	
-	
+	//map.drawMap(window);
+	//player.draw(window);
 	window.display();
 }
 

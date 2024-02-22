@@ -2,11 +2,12 @@
 
 
 Game::Game()
-	:window(sf::VideoMode(1920, 1080), "RayCaster!",sf::Style::Fullscreen)
+	:window(sf::VideoMode(800, 500), "RayCaster!")
 	
 {
 	map.loadMap("world.map", window);
 	//map.printMap();
+	player.spawn(map);
 	window.setMouseCursorGrabbed(true);
 	window.setMouseCursorVisible(false);
 	sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);

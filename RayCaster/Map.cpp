@@ -4,7 +4,7 @@
 
 Map::Map()
 {
-	wall.setFillColor(sf::Color::Blue);
+	wall.setFillColor(sf::Color::White);
 }
 
 void Map::loadMap(std::string fileName, sf::RenderWindow &window)
@@ -36,7 +36,7 @@ void Map::loadMap(std::string fileName, sf::RenderWindow &window)
 		//10000001000000000001
 		//... 0 - empty space
 		// 1 - wall
-		if (ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4')
+		if (ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch== '9')
 		{
 			map[i][j] = ch - '0';
 			i++;
@@ -74,7 +74,7 @@ void Map::drawMap(sf::RenderWindow& window)
 	{
 		for (int j = 0; j < sizeY; j++)
 		{
-			if (map[i][j] == 1)
+			if (map[i][j] != 0 and map[i][j]!=9)
 			{
 				wall.setPosition(i * wall.getSize().x, j * wall.getSize().y);
 				window.draw(wall);

@@ -4,7 +4,7 @@
 
 Player::Player()
 {
-	shape.setFillColor(sf::Color::Red);
+	shape.setFillColor(sf::Color::Black);
 	shape.setRadius(15.f);
 	shape.setOrigin(shape.getRadius(), shape.getRadius());
 	shape.setPosition(200.f, 100.f);
@@ -24,8 +24,8 @@ void Player::update(sf::Time deltaTime, Map &map)
 	// Calculate plane vector perpendicular to the direction vector
 	// Note: Assuming the camera is looking straight ahead (no roll or tilt)
 	// This vector represents the "width" of the camera view
-	plane.x = -dir.y * 0.66f;
-	plane.y = dir.x * 0.66f;
+	plane.x = -dir.y * 1.f;
+	plane.y = dir.x * 1.f;
 }
 
 
@@ -50,8 +50,8 @@ void Player::rotate(float angle, sf::Time deltaTime)
 void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 {
 	//apply deltatime to x and y
-	y *= deltaTime.asMilliseconds();
-	x *= deltaTime.asMilliseconds();
+	y *= deltaTime.asMilliseconds()/4;
+	x *= deltaTime.asMilliseconds()/4;
 	
 	//calculate dx and dy
 	float dx = x * cos(angle * (3.14159265359 / 180)) - y * sin(angle * (3.14159265359 / 180));
@@ -60,8 +60,8 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 	//check for collisions and remove colliding coordinate out of vector
 	//adjust collisions for size of a player
 	// Define the offsets for checking adjacent tiles
-	const float offsetX[4] = { 15.f, 15.f, -15.f, -15.f };
-	const float offsetY[4] = { 15.f, -15.f, 15.f, -15.f };
+	const float offsetX[4] = { 10.f, 10.f, -10.f, -10.f };
+	const float offsetY[4] = { 10.f, -10.f, 10.f, -10.f };
 
 	// Get the position of the shape
 	sf::Vector2f shapePosition = shape.getPosition();
@@ -73,7 +73,7 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 	for (int i = 0; i < 4; ++i) {
 		int xIndex = (int)(shapePosition.x + dx + offsetX[i]) / wallSizeX;
 		int yIndex = (int)(shapePosition.y + offsetY[i]) / wallSizeY;
-		if (map.getMap()[xIndex][yIndex] != 0) {
+		if (map.getMap()[xIndex][yIndex] != 0 and map.getMap()[xIndex][yIndex] != 9) {
 			canMoveX = false;
 			break;
 		}
@@ -86,7 +86,7 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 	for (int i = 0; i < 4; ++i) {
 		int xIndex = (int)(shapePosition.x + offsetX[i]) / wallSizeX;
 		int yIndex = (int)(shapePosition.y + dy + offsetY[i]) / wallSizeY;
-		if (map.getMap()[xIndex][yIndex] != 0) {
+		if (map.getMap()[xIndex][yIndex] != 0 and map.getMap()[xIndex][yIndex] != 9) {
 			canMoveY = false;
 			break;
 		}
@@ -98,6 +98,7 @@ void Player::move(float x, float y, sf::Time deltaTime, Map &map)
 
 void Player::draw(sf::RenderWindow& window)
 {
+
 	window.draw(shape);
 	//draw line that indicates dir vector
 	sf::Vertex line[] =
@@ -112,7 +113,7 @@ void Player::castRays(sf::RenderWindow& window, Map& map) {
     int w = window.getSize().x;
     sf::Vector2i wallSize = map.getWallSize();
     sf::Vector2u windowSize = window.getSize();
-    int stepSize =15;
+    int stepSize = 5;
 
     // Pre-calculate constants
     double invW = 1.0 / w;
@@ -178,7 +179,7 @@ void Player::castRays(sf::RenderWindow& window, Map& map) {
 			}
 			if (rayPos.x < 0 || rayPos.y < 0)
 				break;
-			if (map.getMap()[rayPos.x / wallSize.x][rayPos.y / wallSize.y] != 0)
+			if (map.getMap()[rayPos.x / wallSize.x][rayPos.y / wallSize.y] != 0 and map.getMap()[rayPos.x / wallSize.x][rayPos.y / wallSize.y] != 9)
 				hit = true;
 		}
 		if (side == 0)
@@ -214,7 +215,23 @@ void Player::castRays(sf::RenderWindow& window, Map& map) {
 		window.draw(rect);
 	}
 }
-        
+
+void Player::spawn(Map map)
+{
+	for (int i = 0; i < map.getWidth();i++)
+	{
+		for (int j = 0; j < map.getHeight();j++)
+		{
+			if (map.getMap()[i][j] == 9)
+			{
+				shape.setPosition(i * map.getWallSize().x +map.getWallSize().x/2, j * map.getWallSize().y+map.getWallSize().y/2);
+				return;
+			}
+		}
+	}
+}
+
+
 
 
 

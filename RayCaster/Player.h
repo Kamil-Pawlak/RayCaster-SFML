@@ -11,6 +11,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void castRays(sf::RenderWindow &window, Map &map);
 	sf::Vector2f getPos() { return pos; }
+	void spawn(Map map);
 
 private:
 	sf::CircleShape shape;
